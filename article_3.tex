@@ -1,0 +1,197 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Stylish Article
+% LaTeX Template
+% Version 2.0 (13/4/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Mathias Legrand (legrand.mathias@gmail.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[fleqn,10pt]{SelfArx} % Document font size and equations flushed left
+
+\usepackage{lipsum} % Required to insert dummy text. To be removed otherwise
+\usepackage{todonotes}
+%----------------------------------------------------------------------------------------
+%	COLUMNS
+%----------------------------------------------------------------------------------------
+
+\setlength{\columnsep}{0.55cm} % Distance between the two columns of text
+\setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
+
+%----------------------------------------------------------------------------------------
+%	COLORS
+%----------------------------------------------------------------------------------------
+
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%----------------------------------------------------------------------------------------
+
+\usepackage{hyperref} % Required for hyperlinks
+\hypersetup{hidelinks,colorlinks,breaklinks=true,urlcolor=color2,citecolor=color1,linkcolor=color1,bookmarksopen=false,pdftitle={Title},pdfauthor={Author}}
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE INFORMATION
+%----------------------------------------------------------------------------------------
+
+\JournalInfo{Journal, Vol. XXI, No. 1, 1-5, 2013} % Journal information
+\Archive{Additional note} % Additional notes (e.g. copyright, DOI, review/research article)
+
+\PaperTitle{DeepRTS: A Flexible Machine Learning platform for Real Time Strategy Games} % Article title
+
+\Authors{Per-Arne Andersen\textsuperscript{1}, Morten Goodwin\textsuperscript{1}, Ole-Christoffer Granmo\textsuperscript{1}} % Authors
+
+\affiliation{\textsuperscript{1}\textit{Department of Information and Communication Technology, University of Agder, Grimstad, Norway}} % Author affiliation
+
+%\affiliation{*\textbf{Corresponding author}: john@smith.com} % Corresponding author
+
+\Keywords{Deep Learning --- Reinforment Learning --- Neural Network --- Deep-Q-Network --- Tree Search --- Monte Carlo Methods --- POMDP --- MDP --- Real Time Strategy} % Keywords - if you don't want any simply remove all the text between the curly brackets
+\newcommand{\keywordname}{Keywords} % Defines the keywords heading name
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+\Abstract{We propose a Deep learning platform, \textit{\textbf{DeepRTS}} for edge research in the field of artificial intelligence. Games can be used to compare and develop novel AI techniques which can later be used in real world scenarios. The proposed platform consist of a high performance, real time strategy game with several API gateways for reinforcement learning, deep learning and machine learning development. RTS Games are known to have a immensely high branching factor. This requires algorithms to have a high discover rate, or a technique to easily eliminate the state space pool. This work also present results of existing machine learning techniques applied to the learning platform. An survey of applicable algorithms to the RTS problem is also outlined to create a future work plan for the learning platform.}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\flushbottom % Makes all text pages the same height
+
+\maketitle % Print the title and abstract box
+
+\tableofcontents % Print the contents section
+
+\thispagestyle{empty} % Removes page numbering from the first page
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\section{Introduction} % The \section*{} command stops section numbering
+\addcontentsline{toc}{section}{Introduction} % Adds this section to the table of contents
+There exist no Real-Time strategy game simulator environment that features a challenging enough environment for the most advanced reinforcement learning algorithms. DeepRTS attempts to fill the gap between μRTS [source] and Starcraft 2 in complexity making it possible to perform machine learning research at multiple complexity levels. DeepRTS attempts to give an easy to use environment with minimal configuration but also maximum flexibility.
+\\
+\\
+Real-Time-Strategy-Games (RTS) are a game genre which features real time events from multiple players. This renders current methods of state-space searching almost impossible with the technology today. Starcraft 2, worlds most popular RTS game are expected to be one of the biggest challenge of reinforcement learning because of the huge search-space. Its hard to measure its maximum state-space, but one are certain that it expands beyond $10^{1024}$. An AI algorithm must be able to understand and construct abstractions to the state-space in order to drastically reduce its search space.
+\\
+\\
+Controlling an agent in an environment where the sensory data is sparse, abstract and hard to interpret directly, is one of the most challenging tasks yet to be solved in the realm of reinforcement learning (RL). RL is an area of machine learning, where the agent directly interacts  with the environment to learn a \textit{policy}. This policy determines how the agent reacts to its environment, and does a action based on this.
+\\
+\\
+% 1 https://en.wikipedia.org/wiki/Game_complexity
+% 2 https://en.wikipedia.org/wiki/AlphaGo#Hardware
+% 3 (http://www.cs.mun.ca/~dchurchill/pdf/starcraft_survey.pdf)
+Challenges arises when the problem becomes complex, such as large state and action spaces. To give an idea of what a large state space is we can estimate chess to be $10^{47}$ [1] , the game of Go to be $10^{170}$ [1]. The game of Go, was until recently a impossible problem because of hardware limitation, but with todays proccessing power, this became possible. But Go is still not possible to beat using a regular computer, as it required google to construct a distributed machine with 1920 CPUs  and 280GPUs having 64 concurrent threads  searching for the next best move. [2]
+\\
+\\
+
+This work attempts to take \textit{microRTS}, a RTS simulator closer to the ultimate goal of solving a RTS game. In contrast to μRTS, DeepRTS is an simulator which simplifies development of algorithms to solve high complex tasks like Starcraft 2. Following sections introduces the platform and some introductory results using Monte-Carlo-Tree-Search (MCTS) and Deep-Q-Learning (DQN).
+
+%------------------------------------------------
+\section{State of the art} % The \section*{} command stops section numbering
+\addcontentsline{toc}{section}{State of the art} % Adds this section to the table of contents
+
+
+\section{Real-Time Strategy Games}
+\begin{itemize}
+    \item What is an RTS?
+    \item Why is it hard?
+    \item What exists? (Other research, microRTS.. etc)
+    \item Which algorithms are worth trying out? any algorithms that looks promising? DeepNNs?, MCTS?
+\end{itemize}
+
+\begin{figure}[ht]\centering
+\includegraphics[width=\linewidth]{results}
+\caption{In-text Picture}
+\label{fig:results}
+\end{figure}
+
+\section{DeepRTS}
+RTS is one of the most difficult problems to solve using machine learning [NEED SOURCE]. Continuous state-space with huge action spaces requires computational power beyond the capabilities of current hardware [NEED SOURCE]. In order to solve Star Craft 2, \textbf{DeepRTS} is a suited problem to start at.
+
+
+\begin{figure}[ht]\centering
+\includegraphics[width=\linewidth]{deep_rts}
+\caption{DeepRTS Simulator}
+\label{fig:results}
+\end{figure}
+
+The objective of playing DeepRTS is to build a base consisting of an Town-Hall and then expand the base in order to gain military power to defeat the opponents. Each of the players start with a worker. Workers can build and gather resources in the game to improve the players base.   [NEED REVISING, skriver så en tulling]. The game consist of two main termonologies, \textit{Micro} and \textit{Macro} management. In order to win, the player with the best ability to both micro and macro mange their resources are most likely to win. [OMMMG REVISE]
+
+DeepRTS was specifically developed for high-performance simulation for the RTS genre. It is developed in C++ with API for Python, websockets, LUA and ZeroMQ. It focuses on being flexible in configuration to allow for development of different AI approaches, i.e reinforcement learning and unsupervised learning. The simulator also features a python version which can be used with Gym, however it does not perform as good as the C++ implementation, but it is well suited for GPU based machine learning.
+
+The game interface attempts to display all of the important statistics meanwhile a game is ongoing. This being \textit{action execution distribution}, player resources, player scores and a live performance graph.
+Additionally the game have multiple hot-keys for moderating game-speed and graphics. A Detailed list of these hot-keys can be found by pressing the \textit{G}-hotkey. 
+
+One of its major features is that it allow up to 16 players. At current level of AI, a reasonable goal is 3 players. This is because it eliminates possibility for regular min-max strategies [NEED SOURCE]. Some algorithms have been developed for basic game-play, specifically algorithms based on \textit{Monte-Carlo Methods}, these will be thoroughly discussed in the upcoming chapters.
+The goal of DeepRTS is to improve productivity and the understanding of artificial intelligence, and making it possible to further expand towards a super intelligent AI.
+
+%------------------------------------------------
+
+\section{Algorithms}
+
+\subsection{DQN}
+\includegraphics[width=\linewidth]{3000.png}
+\includegraphics[width=\linewidth]{12000.png}
+
+
+\subsection{Monte-Carlo Methods}
+Monte-Carlo methods (MCM) works by using random-sampling to attempt to find an optimal solution. Eventually an optimal state will be found given an indefinite time budget. Monte-Carlo Tree search is the algorithm of research covered here, with some alterations which branch into a new algorithm \textit{Monte-Carlo Graph Search}.
+Tree-Search algorithms are widely used in chess and other turn-based games, and perform well in scenarios where the time budget is high. The more computational time, the bigger branching scope are being discovered and thus yielding a high expertise level.
+In DeepRTS MCM is challenge becuase it has yet to perform well in games with more than two players \todo{[NEED SOURCE]}. DeepRTS is also an complex game where state-space is beyond the known scope of success for this algorithm genre. Specifically, \textit{Monte-Carlo Direct Approach} shown good results which may be an indication that high-level abstractions can improve performance of tree-seach algorithms [NEED SOURCE]
+\\
+\\
+In DeepRTS, all MCM methods have a finite time-budget set to \textbf{18} milliseconds. Additionally all of the algorithms are configured with an depth-limit of \textbf{10}. 
+Each algorithm uses a unique heuristic for selecting the optimal action per cycle, and these will be discussed thoroughly in the upcoming subsections.
+\subsubsection*{Upper Confidence Bounds}
+blablablac
+
+\subsubsection*{UCB Action Search}
+blablala
+
+\subsubsection*{Direct Greedy Approach}
+blablabla
+
+\subsubsection*{Graph Search}
+
+\section{Theoretical Aproaches}
+\begin{itemize}
+    \item Algorithms that may work
+\end{itemize}
+
+\section{Results}
+
+%------------------------------------------------
+\phantomsection
+\section*{Acknowledgments} % The \section*{} command stops section numbering
+
+\addcontentsline{toc}{section}{Acknowledgments} % Adds this section to the table of contents
+
+So long and thanks for all the fish \cite{Figueredo:2009dg}.
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+\phantomsection
+\bibliographystyle{unsrt}
+\bibliography{sample}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
