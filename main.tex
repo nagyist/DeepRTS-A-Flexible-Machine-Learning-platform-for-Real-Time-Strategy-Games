@@ -1,26 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Stylish Article
-% LaTeX Template
-% Version 2.0 (13/4/14)
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% Original author:
-% Mathias Legrand (legrand.mathias@gmail.com)
-%
-% License:
-% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
-
-\documentclass[fleqn,10pt]{SelfArx} % Document font size and equations flushed left
-
-\usepackage{lipsum} % Required to insert dummy text. To be removed otherwise
+\documentclass[fleqn,10pt]{article} % Document font size and equations flushed left
 \usepackage{todonotes}
 %----------------------------------------------------------------------------------------
 %	COLUMNS
@@ -46,34 +24,30 @@
 %----------------------------------------------------------------------------------------
 %	ARTICLE INFORMATION
 %----------------------------------------------------------------------------------------
+\title{DeepRTS: A Flexible Machine Learning platform for Real Time Strategy Games}
+\date{October 31, 2014}
+\author{Per-Arne Andersen \and Morten Goodwin \and Ole-Christoffer Granmo}
 
-\JournalInfo{Journal, Vol. XXI, No. 1, 1-5, 2013} % Journal information
-\Archive{Additional note} % Additional notes (e.g. copyright, DOI, review/research article)
 
-\PaperTitle{DeepRTS: A Flexible Machine Learning platform for Real Time Strategy Games} % Article title
+% Deep Learning --- Reinforment Learning --- Neural Network --- Deep-Q-Network --- Tree Search --- Monte Carlo Methods --- POMDP --- MDP --- Real Time Strategy
 
-\Authors{Per-Arne Andersen\textsuperscript{1}, Morten Goodwin\textsuperscript{1}, Ole-Christoffer Granmo\textsuperscript{1}} % Authors
 
-\affiliation{\textsuperscript{1}\textit{Department of Information and Communication Technology, University of Agder, Grimstad, Norway}} % Author affiliation
-
-%\affiliation{*\textbf{Corresponding author}: john@smith.com} % Corresponding author
-
-\Keywords{Deep Learning --- Reinforment Learning --- Neural Network --- Deep-Q-Network --- Tree Search --- Monte Carlo Methods --- POMDP --- MDP --- Real Time Strategy} % Keywords - if you don't want any simply remove all the text between the curly brackets
-\newcommand{\keywordname}{Keywords} % Defines the keywords heading name
-
-%----------------------------------------------------------------------------------------
-%	ABSTRACT
-%----------------------------------------------------------------------------------------
-
-\Abstract{We propose a Deep learning platform, \textit{\textbf{DeepRTS}} for edge research in the field of artificial intelligence. Games can be used to compare and develop novel AI techniques which can later be used in real world scenarios. The proposed platform consist of a high performance, real time strategy game with several API gateways for reinforcement learning, deep learning and machine learning development. RTS Games are known to have a immensely high branching factor. This requires algorithms to have a high discover rate, or a technique to easily eliminate the state space pool. This work also present results of existing machine learning techniques applied to the learning platform. An survey of applicable algorithms to the RTS problem is also outlined to create a future work plan for the learning platform.}
-
-%----------------------------------------------------------------------------------------
 
 \begin{document}
 
 \flushbottom % Makes all text pages the same height
 
 \maketitle % Print the title and abstract box
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+\begin{abstract}
+We propose a Deep learning platform, \textit{\textbf{DeepRTS}} for edge research in the field of artificial intelligence. Games can be used to compare and develop novel AI techniques which can be used in real world scenarios. The proposed platform consist of a high performance, real-time strategy game with several API gateways for reinforcement learning, deep learning and machine learning development. RTS Games are known to have a high branching factor. \todo{This requires algorithms to have a high discover rate, or a technique to easily eliminate the state space pool}. This work also present results of existing machine learning techniques applied to the learning platform. An survey of applicable algorithms for solving RTS is also outlined to create a future work plan for the learning platform.
+\end{abstract}
+%----------------------------------------------------------------------------------------
+
+\newpage
 
 \tableofcontents % Print the contents section
 
@@ -84,11 +58,10 @@
 %----------------------------------------------------------------------------------------
 
 \section{Introduction} % The \section*{} command stops section numbering
-\addcontentsline{toc}{section}{Introduction} % Adds this section to the table of contents
-There exist no Real-Time strategy game simulator environment that features a challenging enough environment for the most advanced reinforcement learning algorithms. DeepRTS attempts to fill the gap between μRTS [source] and Starcraft 2 in complexity making it possible to perform machine learning research at multiple complexity levels. DeepRTS attempts to give an easy to use environment with minimal configuration but also maximum flexibility.
+There exist no Real-Time strategy game (RTS) simulator environment that features a challenging enough environment for the most advanced reinforcement learning algorithms. DeepRTS attempts to fill the gap between μRTS [source] and Starcraft 2 in complexity making it possible to perform machine learning research at multiple complexity levels. It provides a easy-to-use environment with minimal configuration focusing on maximum flexibility.
 \\
 \\
-Real-Time-Strategy-Games (RTS) are a game genre which features real time events from multiple players. This renders current methods of state-space searching almost impossible with the technology today. Starcraft 2, worlds most popular RTS game are expected to be one of the biggest challenge of reinforcement learning because of the huge search-space. Its hard to measure its maximum state-space, but one are certain that it expands beyond $10^{1024}$. An AI algorithm must be able to understand and construct abstractions to the state-space in order to drastically reduce its search space.
+RTS are a genre which features real-time events from multiple players. This renders current methods of state-space searching almost impossible with the technology today. Starcraft 2, worlds most popular RTS game are expected to be one of the biggest challenge of reinforcement learning because of the huge search-space. Its hard to measure its maximum state-space, but one are certain that it expands beyond $10^{1024}$. An AI algorithm must be able to understand and construct abstractions to the state-space in order to drastically reduce its search space.
 \\
 \\
 Controlling an agent in an environment where the sensory data is sparse, abstract and hard to interpret directly, is one of the most challenging tasks yet to be solved in the realm of reinforcement learning (RL). RL is an area of machine learning, where the agent directly interacts  with the environment to learn a \textit{policy}. This policy determines how the agent reacts to its environment, and does a action based on this.
@@ -109,11 +82,15 @@ This work attempts to take \textit{microRTS}, a RTS simulator closer to the ulti
 
 
 \section{Real-Time Strategy Games}
+RTS is a subgenre of strategy games where each player must a base, gather resources and construct an army in order to defeat their opponents. In contrast to \textit{Chess}, RTS games differs by allowing \textit{simultaneous actions} meaning that all players can issue actions at the same time. The real-time aspect of RTS games increases the difficulty level because it encourage players to perform actions frequently, often as frequent as 50 ms. R
+
+
 \begin{itemize}
     \item What is an RTS?
     \item Why is it hard?
     \item What exists? (Other research, microRTS.. etc)
     \item Which algorithms are worth trying out? any algorithms that looks promising? DeepNNs?, MCTS?
+    \item Test
 \end{itemize}
 
 \begin{figure}[ht]\centering
