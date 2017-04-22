@@ -4,6 +4,12 @@
 \newcommand{\todo}[1]{}
 \renewcommand{\todo}[1]{{\color{red} TODO: {#1}}}
 
+%
+%   BIBLIOGRAPHY
+%
+\usepackage{cite}
+\bibliography{sample}{}
+\bibliographystyle{plain}
 
 %----------------------------------------------------------------------------------------
 %	COLUMNS
@@ -29,7 +35,7 @@
 %----------------------------------------------------------------------------------------
 %	ARTICLE INFORMATION
 %----------------------------------------------------------------------------------------
-\title{DeepRTS: A Flexible Deep Learning platform for Real Time Strategy Games}
+\title{DeepRTS: Flexible Deep Learning platform for Real Time Strategy Games}
 \date{\today}
 \author{Per-Arne Andersen \and Morten Goodwin \and Ole-Christoffer Granmo}
 
@@ -39,11 +45,8 @@
 
 
 \begin{document}
-
 \flushbottom % Makes all text pages the same height
-
 \maketitle % Print the title and abstract box
-
 %----------------------------------------------------------------------------------------
 %	ABSTRACT
 %----------------------------------------------------------------------------------------
@@ -89,7 +92,7 @@ MicroRTS is a excellent RTS simulator, but does not enough content to push deep 
 This report presents the game simulator \textit{DeepRTS} with initial results in Monte Carlo Tree-Search and the novel algorithm Deep Q-Learning from Google DeepMind. \todo{Ka mer ska eg skriva her da}
 %------------------------------------------------
 \section{State of the art} % The \section*{} command stops section numbering
-\addcontentsline{toc}{section}{State of the art} % Adds this section to the table of contents
+Deep Learning is a field which has a fast paced research speed. Google, Facebook, Facebook and so on are constantly pushing the borders of deep learning to master the ultimate goal of \textit{superintelligence}. One of the biggest achievements in deep learning in recent time is Alpha GO, which in march 2016 defeated 9-dan Lee Sedol \cite{Silver_2016}. \textit{Playing Atari with Deep Reinforcement Learning} is a novel algorithm based on Q-Learning combined with Neural Network (DQN) \cite{DBLP:journals/corr/MnihKSGAWR13}. Current state-of-the-art is DeepStack, a recent general-purpose algorithm which attempts to solve numerous imperfect information games like Texas no-limit Texas hold’em \cite{DBLP:journals/corr/MoravcikSBLMBDW17}.
 
 
 \section{Real-Time Strategy Games}
