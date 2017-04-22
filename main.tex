@@ -1,5 +1,10 @@
 \documentclass[fleqn,10pt]{article} % Document font size and equations flushed left
-\usepackage{todonotes}
+\usepackage{color}
+\usepackage{graphicx}
+\newcommand{\todo}[1]{}
+\renewcommand{\todo}[1]{{\color{red} TODO: {#1}}}
+
+
 %----------------------------------------------------------------------------------------
 %	COLUMNS
 %----------------------------------------------------------------------------------------
@@ -25,7 +30,7 @@
 %	ARTICLE INFORMATION
 %----------------------------------------------------------------------------------------
 \title{DeepRTS: A Flexible Deep Learning platform for Real Time Strategy Games}
-\date{October 31, 2014}
+\date{\today}
 \author{Per-Arne Andersen \and Morten Goodwin \and Ole-Christoffer Granmo}
 
 
@@ -43,10 +48,9 @@
 %	ABSTRACT
 %----------------------------------------------------------------------------------------
 \begin{abstract}
-We propose a Deep learning platform, \textit{\textbf{DeepRTS}} for edge research in the field of artificial intelligence. Games can be used to compare and develop novel AI techniques which can be used in real world scenarios. The proposed platform consist of a high performance, real-time strategy game with several API gateways for reinforcement learning, deep learning and machine learning development. RTS Games are known to have a high branching factor. \todo{HMM}This requires algorithms to have a high discover rate, or a technique to easily eliminate the state space pool. This work also present results of existing machine learning techniques applied to the learning platform. An survey of applicable algorithms for solving RTS is also outlined to create a future work plan for the learning platform
+We propose a Deep learning platform, \textit{\textbf{DeepRTS}} for edge research in the field of artificial intelligence. 
+Games are a excellent tool for creating novel AI techniques which can be adpoted to real world scenarios. The proposed platform is a high performance, real-time strategy game with several API gateways for artificial intelligence research. RTS games are known to have a high state branching factor. This forces proposed algorithms to have a high discover rate, or a technique to easily locate important features the state space. This work present results of Monte-Carlo Tree Search and Deep Q-Learning applied to the platform. An survey of applicable algorithms for solving RTS is also outlined to create a future work roadmap for the learning platform.
 \end{abstract}
-
-
 %----------------------------------------------------------------------------------------
 
 \newpage
@@ -54,39 +58,38 @@ We propose a Deep learning platform, \textit{\textbf{DeepRTS}} for edge research
 \tableofcontents % Print the contents section
 
 \thispagestyle{empty} % Removes page numbering from the first page
-
+\newpage
 %----------------------------------------------------------------------------------------
 %	ARTICLE CONTENTS
 %----------------------------------------------------------------------------------------
 
 \section{Introduction} % The \section*{} command stops section numbering
-There exist no Real-Time strategy game (RTS) simulator environment that features a challenging enough environment for the most advanced reinforcement learning algorithms. DeepRTS attempts to fill the gap between μRTS [source] and Starcraft 2 in complexity making it possible to perform machine learning research at multiple complexity levels. It provides a easy-to-use environment with minimal configuration focusing on maximum flexibility.
+% What the problem is (Does not exist anything between microRTS and SC2)
+There exist no Real-Time strategy game (RTS) simulator environment that support a sufficiently challenging environment for complex deep learning algorithms. MircoRTS is an excellent tool for testing novel AI techniques at a basic level. But is limited to those simple scenarios. Starcraft 2 is a game by Blizzard Entertainment, and is a full fledged game with complex game mechanics. DeepRTS attempts to fill the gap between MicroRTS and Starcraft 2 by enabling research at a range of complexity levels, from the most basic scenarios, to scenarios which are close to matching Starcraft 2.
 \\
 \\
-RTS are a genre which features real-time events from multiple players. This renders current methods of state-space searching almost impossible with the technology today. Starcraft 2, worlds most popular RTS game are expected to be one of the biggest challenge of reinforcement learning because of the huge search-space. Its hard to measure its maximum state-space, but one are certain that it expands beyond $10^{1024}$. An AI algorithm must be able to understand and construct abstractions to the state-space in order to drastically reduce its search space.
-\\
-\\
-Controlling an agent in an environment where the sensory data is sparse, abstract and hard to interpret directly, is one of the most challenging tasks yet to be solved in the realm of reinforcement learning (RL). RL is an area of machine learning, where the agent directly interacts  with the environment to learn a \textit{policy}. This policy determines how the agent reacts to its environment, and does a action based on this.
+% Why it is important and difficult
+AI today are still at a primitive stage. It can handle complex tasks but usually only in a specific area. Health, Military, Finances and Education are examples of institutions which can benefit from artificial intelligence. It is a important field of research which can greatly impact quality of human lives. Real world scenarios are very complex, and it is therefore important to test critical algorithms in an simulated environment first. Computer games are a great way of testing algorithms to measure the performance before adopting it to the real world.
 \\
 \\
 % 1 https://en.wikipedia.org/wiki/Game_complexity
 % 2 https://en.wikipedia.org/wiki/AlphaGo#Hardware
 % 3 (http://www.cs.mun.ca/~dchurchill/pdf/starcraft_survey.pdf)
-Challenges arises when the problem becomes complex, such as large state and action spaces. To give an idea of what a large state space is we can estimate chess to be $10^{47}$ [1] , the game of Go to be $10^{170}$ [1]. The game of Go, was until recently a impossible problem because of hardware limitation, but with todays proccessing power, this became possible. But Go is still not possible to beat using a regular computer, as it required google to construct a distributed machine with 1920 CPUs  and 280GPUs having 64 concurrent threads  searching for the next best move. [2]
+% Why is it hard
+RTS are a genre which features real-time events from multiple players. This renders current methods of state-space searching almost impossible with the technology today. Starcraft 2, worlds most popular RTS game are expected to be one of the biggest challenge of reinforcement learning because of the huge search-space. Its hard to measure its maximum state-space, but one are certain that it expands beyond $10^{1024}$. An AI algorithm must be able to understand and construct abstractions to the state-space in order to drastically reduce its search space.
+Controlling an agent in an environment where the sensory data is sparse, abstract and hard to interpret directly, is one of the most challenging tasks yet to be solved in the realm of reinforcement learning (RL). RL is an area of machine learning, where the agent directly interacts  with the environment to learn a \textit{policy}. This policy determines how the agent reacts to its environment, and does a action based on this.
+Challenges arises when the problem becomes complex, such as large state and action spaces. To give an idea of what a large state space is we can estimate chess to be $10^{47}$ [1] , the game of Go to be $10^{170}$ [1]. The game of Go, was until recently a impossible problem because of hardware limitation, but with todays proccessing power, this became possible. But Go is still not possible to beat using a regular computer, as it required google to construct a distributed machine with 1920 CPUs and 280GPUs having 64 concurrent threads  searching for the next best move. [2]
 \\
 \\
-
-This work attempts to take \textit{microRTS}, a RTS simulator closer to the ultimate goal of solving a RTS game. In contrast to μRTS, DeepRTS is an simulator which simplifies development of algorithms to solve high complex tasks like Starcraft 2. Following sections introduces the platform and some introductory results using Monte-Carlo-Tree-Search (MCTS) and Deep-Q-Learning (DQN).
-
+% Why hasn't it been solved before? (Or, what's wrong with previous proposed solutions? How does mine differ?)
+MicroRTS is a excellent RTS simulator, but does not enough content to push deep learning further. It can easily be mastered by DeepMind's Deep Q-Network and variations of this algorithm can outperform human play. It was designed with tree-search algorithms in mind, but it suffers from some limitations in performance due language choices. DeepRTS attempts to solve these topics by being a performance oriented engine written in pure C++. It have abstraction layers which allows for all kinds of research in the machine learning realm, with deep learning as primary research field.
+\\
+\\
+% What are the key components of my approach and results? Also include any specific limitations.
+This report presents the game simulator \textit{DeepRTS} with initial results in Monte Carlo Tree-Search and the novel algorithm Deep Q-Learning from Google DeepMind. \todo{Ka mer ska eg skriva her da}
 %------------------------------------------------
 \section{State of the art} % The \section*{} command stops section numbering
-%\addcontentsline{toc}{section}{State of the art} % Adds this section to the table of contents
-
-\todo{SOURCE}AI and Deep Learning have since 2011 grown exponentially as a field of research. 
-It started
-
-\textit{Reinforcement Learning} can be classified into two fields; \textbf{Model} and\textbf{ Model-Free} Learning. The model describes the environment and even the RL Agent itself so that it can perform better when performing actions in the environment.
-
+\addcontentsline{toc}{section}{State of the art} % Adds this section to the table of contents
 
 
 \section{Real-Time Strategy Games}
@@ -101,11 +104,6 @@ RTS is a subgenre of strategy games where each player must a base, gather resour
     \item Test
 \end{itemize}
 
-\begin{figure}[ht]\centering
-\includegraphics[width=\linewidth]{results}
-\caption{In-text Picture}
-\label{fig:results}
-\end{figure}
 
 \section{DeepRTS}
 RTS is one of the most difficult problems to solve using machine learning [NEED SOURCE]. Continuous state-space with huge action spaces requires computational power beyond the capabilities of current hardware [NEED SOURCE]. In order to solve Star Craft 2, \textbf{DeepRTS} is a suited problem to start at.
