@@ -32,7 +32,7 @@
 %----------------------------------------------------------------------------------------
 %	ARTICLE INFORMATION
 %----------------------------------------------------------------------------------------
-\title{DeepRTS: Flexible Deep Learning environment for Real Time Strategy Games}
+\title{Flexible Learning environment for Real Time Strategy Games}
 \date{\today}
 \author{Per-Arne Andersen \and Morten Goodwin \and Ole-Christoffer Granmo}
 
@@ -48,8 +48,15 @@
 %	ABSTRACT
 %----------------------------------------------------------------------------------------
 \begin{abstract}
-We propose a Deep learning environment, \textit{\textbf{DeepRTS}} for edge research in the field of artificial intelligence. 
-Games are a excellent tool for creating novel AI techniques which can be adopted to real world scenarios. The proposed environment is a high performance, real-time strategy game with several API gateways for artificial intelligence research. RTS games are known to have a high state branching factor. This forces proposed algorithms to have a high discover rate, or a technique to easily locate important features the state space. This work present results of Monte-Carlo Tree Search and Deep Q-Learning applied to the environment. An survey of applicable algorithms for solving RTS is also outlined to create a future work roadmap for the learning environment.
+This paper proposes a learning environment, \textit{\textbf{DeepRTS}}, designed for testing cutting edge artificial intelligence algorithms for real time strategy (RTS) games.
+
+Recent research shown that games are excellent tools for creating and testing novel AI techniques which can have impact far beyond the game itself. Novel advances in RTS games are expected in the not too distant future, but there is to date no fully functional environment for testing RTS games. Solutions in the literature are either overly simplistic, such as MicroRTS, or complex without options for accelerated learning like Starcraft 2
+
+The proposed environment is a high performance, real-time strategy game made specifically for artificial intelligence research. RTS games are known to have a high state branching factor. This encourage tested algorithms to have good performance within the environment, or a technique to easily locate important features of the state space. 
+
+
+This work present results of Monte-Carlo Tree Search and Deep Q-Learning applied to the environment. A new algorithm based of MCTS is also introduced, trying to solve the Credit Assignment problem in an POMDP.
+An survey of applicable algorithms for solving RTS is also outlined to create a future work roadmap for the learning environment.
 \end{abstract}
 %----------------------------------------------------------------------------------------
 
@@ -92,27 +99,14 @@ This report presents the game simulator \textit{DeepRTS} with initial results in
 Deep Learning is a field which has a fast paced research speed. Google, Facebook, Facebook and so on are constantly pushing the borders of deep learning to master the ultimate goal of \textit{superintelligence}. One of the biggest achievements in deep learning in recent time is Alpha GO, which in march 2016 defeated 9-dan Lee Sedol \cite{Silver_2016}. \textit{Playing Atari with Deep Reinforcement Learning} is a novel algorithm based on Q-Learning combined with Neural Network (DQN) \cite{DBLP:journals/corr/MnihKSGAWR13}. Current state-of-the-art is DeepStack, a recent general-purpose algorithm which attempts to solve numerous imperfect information games like Texas no-limit Texas hold’em \cite{DBLP:journals/corr/MoravcikSBLMBDW17}.
 
 
-\section{Real-Time Strategy Games}
-RTS is a subgenre of strategy games where each player must a base, gather resources and construct an army in order to defeat their opponents. In contrast to \textit{Chess}, RTS games differs by allowing \textit{simultaneous actions} meaning that all players can issue actions at the same time. The real-time aspect of RTS games increases the difficulty level because it encourage players to perform actions frequently, often as frequent as 50 ms. R
-
-
-\begin{itemize}
-    \item What is an RTS?
-    \item Why is it hard?
-    \item What exists? (Other research, microRTS.. etc)
-    \item Which algorithms are worth trying out? any algorithms that looks promising? DeepNNs?, MCTS?
-    \item Test
-\end{itemize}
-
 
 \section{DeepRTS}
-RTS is one of the most difficult problems to solve using machine learning [NEED SOURCE]. Continuous state-space with huge action spaces requires computational power beyond the capabilities of current hardware [NEED SOURCE]. In order to solve Star Craft 2, \textbf{DeepRTS} is a suited problem to start at.
+RTS is one of the most difficult game problems to solve using machine learning [NEED SOURCE]. Continuous state-space with huge action spaces requires computational power beyond the capabilities of current hardware [NEED SOURCE]. In order to solve Star Craft 2, \textbf{DeepRTS} was developed to better measure algorithms fitness towards super-intelligence.
 
-
-\begin{figure}[ht]\centering
-\includegraphics[width=\linewidth]{deep_rts}
-\caption{DeepRTS Simulator}
-\label{fig:results}
+\begin{figure}[!htp]\centering
+    \includegraphics[width=\linewidth]{deep_rts}
+    \caption{DeepRTS Simulator}
+    \label{fig:results}
 \end{figure}
 
 The objective of playing DeepRTS is to build a base consisting of an Town-Hall and then expand the base in order to gain military power to defeat the opponents. Each of the players start with a worker. Workers can build and gather resources in the game to improve the players base.   [NEED REVISING, skriver så en tulling]. The game consist of two main termonologies, \textit{Micro} and \textit{Macro} management. In order to win, the player with the best ability to both micro and macro mange their resources are most likely to win. [OMMMG REVISE]
