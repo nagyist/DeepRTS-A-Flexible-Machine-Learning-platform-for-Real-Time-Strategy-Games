@@ -72,7 +72,7 @@ An survey of applicable algorithms for solving RTS is also outlined to create a 
 
 \section{Introduction} % The \section*{} command stops section numbering
 % What the problem is (Does not exist anything between microRTS and SC2)
-There exist no Real-Time strategy game (RTS) simulator environment that support a sufficiently challenging environment for complex deep learning algorithms. MircoRTS is an excellent tool for testing novel AI techniques at a basic level. But is limited to those simple scenarios. Starcraft 2 is a game by Blizzard Entertainment, and is a full fledged game with complex game mechanics. DeepRTS attempts to fill the gap between MicroRTS and Starcraft 2 by enabling research at a range of complexity levels, from the most basic scenarios, to scenarios which are close to matching Starcraft 2.
+There exist no Real-Time strategy game (RTS) simulator environment that support a sufficiently challenging environment for complex deep learning algorithms. MircoRTS is an excellent tool for testing novel AI techniques at a basic level. But is limited to those scenarios. Starcraft 2 is a game by Blizzard Entertainment, and is a full fledged game with complex game mechanics. DeepRTS attempts to fill the gap between MicroRTS and Starcraft 2 by enabling research at a range of complexity levels, from the most basic scenarios, to scenarios which are close to matching Starcraft 2.
 \\
 \\
 % Why it is important and difficult
@@ -84,23 +84,33 @@ AI today are still at a primitive stage. It can handle complex tasks but usually
 % 3 (http://www.cs.mun.ca/~dchurchill/pdf/starcraft_survey.pdf)
 % Why is it hard
 RTS are a genre which features real-time events from multiple players. This renders current methods of state-space searching almost impossible with the technology today. Starcraft 2, worlds most popular RTS game are expected to be one of the biggest challenge of reinforcement learning because of the huge search-space. Its hard to measure its maximum state-space, but one are certain that it expands beyond $10^{1024}$. An AI algorithm must be able to understand and construct abstractions to the state-space in order to drastically reduce its search space.
-Controlling an agent in an environment where the sensory data is sparse, abstract and hard to interpret directly, is one of the most challenging tasks yet to be solved in the realm of reinforcement learning (RL). RL is an area of machine learning, where the agent directly interacts  with the environment to learn a \textit{policy}. This policy determines how the agent reacts to its environment, and does a action based on this.
-Challenges arises when the problem becomes complex, such as large state and action spaces. To give an idea of what a large state space is we can estimate chess to be $10^{47}$ [1] , the game of Go to be $10^{170}$ [1]. The game of Go, was until recently a impossible problem because of hardware limitation, but with todays proccessing power, this became possible. But Go is still not possible to beat using a regular computer, as it required google to construct a distributed machine with 1920 CPUs and 280GPUs having 64 concurrent threads  searching for the next best move. [2]
+Controlling an agent in an environment where the sensory data is sparse, abstract and hard to interpret directly, is one of the most challenging tasks yet to be solved in reinforcement learning (RL). RL is an area of machine learning, where the agent directly interacts  with the environment to learn a \textit{policy}. This policy determines how the agent reacts to its environment, and does a action based on this.
+Challenges arises when the problem becomes complex, such as large state and action spaces. To give an idea of what a large state space is we can estimate chess to be $10^{47}$ [1] , the game of Go to be $10^{170}$ [1]. The game of Go, was until recently a impossible problem because of hardware limitation, but with todays processing power, this became possible. But Go is still not possible to beat using a regular computer, as it required google to construct a distributed machine with 1920 CPUs and 280GPUs having 64 concurrent threads  searching for the next best move. [2]
 \\
 \\
 % Why hasn't it been solved before? (Or, what's wrong with previous proposed solutions? How does mine differ?)
-MicroRTS is a excellent RTS simulator, but does not enough content to push deep learning further. It can easily be mastered by DeepMind's Deep Q-Network and variations of this algorithm can outperform human play. It was designed with tree-search algorithms in mind, but it suffers from some limitations in performance due language choices. DeepRTS attempts to solve these topics by being a performance oriented engine written in pure C++. It have abstraction layers which allows for all kinds of research in the machine learning realm, with deep learning as primary research field.
+MicroRTS is a excellent RTS simulator, but does not contain enough content to push deep learning further. It can easily be mastered by DeepMind's Deep Q-Network and variations of this algorithm can outperform human play. It was designed with tree-search algorithms in mind, but it suffers from some limitations in performance due language choices. DeepRTS attempts to solve these topics by being a performance oriented engine written in pure C++. It have abstraction layers which allows for all kinds of research in the machine learning realm, with deep learning as primary research field.
 \\
 \\
 % What are the key components of my approach and results? Also include any specific limitations.
-This report presents the game simulator \textit{DeepRTS} with initial results in Monte Carlo Tree-Search and the novel algorithm Deep Q-Learning from Google DeepMind. \todo{Ka mer ska eg skriva her da}
+This work presents \textit{DeepRTS} a learning environment which puts emphasis on numerous areas of RL which were hard to measure before because of missing environments. In addition, Monte-Carlo Action Search, a novel technique finding optimal action sequence is presented together with Deep Q-Learning.
+ \todo{Ka mer ska eg skriva her da}
 %------------------------------------------------
-\section{State of the art} % The \section*{} command stops section numbering
+\section{Related work} % The \section*{} command stops section numbering
+
+
+
+
 Deep Learning is a field which has a fast paced research speed. Google, Facebook, Facebook and so on are constantly pushing the borders of deep learning to master the ultimate goal of \textit{superintelligence}. One of the biggest achievements in deep learning in recent time is Alpha GO, which in march 2016 defeated 9-dan Lee Sedol \cite{Silver_2016}. \textit{Playing Atari with Deep Reinforcement Learning} is a novel algorithm based on Q-Learning combined with Neural Network (DQN) \cite{DBLP:journals/corr/MnihKSGAWR13}. Current state-of-the-art is DeepStack, a recent general-purpose algorithm which attempts to solve numerous imperfect information games like Texas no-limit Texas hold’em \cite{DBLP:journals/corr/MoravcikSBLMBDW17}.
 
 
 
 \section{DeepRTS}
+RTS is 
+
+
+
+
 RTS is one of the most difficult game problems to solve using machine learning [NEED SOURCE]. Continuous state-space with huge action spaces requires computational power beyond the capabilities of current hardware [NEED SOURCE]. In order to solve Star Craft 2, \textbf{DeepRTS} was developed to better measure algorithms fitness towards super-intelligence.
 
 \begin{figure}[!htp]\centering
@@ -159,17 +169,12 @@ blablabla
 \section{Results}
 
 %------------------------------------------------
-\phantomsection
-\section*{Acknowledgments} % The \section*{} command stops section numbering
 
-\addcontentsline{toc}{section}{Acknowledgments} % Adds this section to the table of contents
-
-So long and thanks for all the fish \cite{Figueredo:2009dg}.
 
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
-\phantomsection
+
 \bibliographystyle{unsrt}
 \bibliography{sample}
 
