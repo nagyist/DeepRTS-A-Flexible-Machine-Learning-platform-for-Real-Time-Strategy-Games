@@ -4,6 +4,7 @@
 \newcommand{\todo}[1]{}
 \renewcommand{\todo}[1]{{\color{red} TODO: {#1}}}
 
+
 %
 %   BIBLIOGRAPHY
 %
@@ -32,9 +33,9 @@
 %----------------------------------------------------------------------------------------
 %	ARTICLE INFORMATION
 %----------------------------------------------------------------------------------------
-\title{Flexible Learning environment for Real Time Strategy Games}
-\date{\today}
-\author{Per-Arne Andersen \and Morten Goodwin \and Ole-Christoffer Granmo}
+\title{DeepRTS: Flexible Learning environment for Real Time Strategy Games}
+\date{}
+\author{Per-Arne~Andersen \and Morten~Goodwin \and Ole-Christoffer~Granmo}
 
 
 % Deep Learning --- Reinforment Learning --- Neural Network --- Deep-Q-Network --- Tree Search --- Monte Carlo Methods --- POMDP --- MDP --- Real Time Strategy
@@ -50,9 +51,11 @@
 \begin{abstract}
 This paper proposes a learning environment, \textit{\textbf{DeepRTS}}, designed for testing cutting edge artificial intelligence algorithms for real time strategy (RTS) games.
 
-Recent research shown that games are excellent tools for creating and testing novel AI techniques which can have impact far beyond the game itself. Novel advances in RTS games are expected in the not too distant future, but there is to date no fully functional environment for testing RTS games. Solutions in the literature are either overly simplistic, such as MicroRTS, or complex without options for accelerated learning like Starcraft 2
+Recent research has shown that games are excellent tools for creating and testing novel AI techniques which can have impact far beyond the game itself. Novel advances in RTS games are expected in the not too distant future, but there is to date no fully functional environment for testing RTS games. Solutions in the literature are either overly simplistic, such as MicroRTS, or complex without options for accelerated learning like Starcraft 2
 
-The proposed environment is a high performance, real-time strategy game made specifically for artificial intelligence research. RTS games are known to have a high state branching factor. This encourage tested algorithms to have good performance within the environment, or a technique to easily locate important features of the state space. 
+The proposed environment is a high performance, real-time strategy game made specifically for artificial intelligence research. It supports accelerated learning, meaning that it can learn at 1000 times real life. 
+
+RTS games are known to have a high state branching factor. This encourage tested algorithms to have good performance within the environment, or a technique to easily locate important features of the state space. 
 
 
 This work present results of Monte-Carlo Tree Search and Deep Q-Learning applied to the environment. A new algorithm based of MCTS is also introduced, trying to solve the Credit Assignment problem in an POMDP.
